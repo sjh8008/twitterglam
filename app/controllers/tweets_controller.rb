@@ -28,6 +28,25 @@ class TweetsController < ApplicationController
         end
   end
 
+def update
+  respond_to do |format|
+    if @tweet.update(tweet_params)
+    format.html { redirect_to @tweet, notice: 'Post was successfully updated' }
+  else
+    format.html {render :edit}
+  end
+end
+end
+
+def destroy
+  @tweet.destroy
+
+  respond_to do |format|
+    format.html { redirect_to tweets_url, noitce: 'Tweet was successfully destroyed.' }
+  end
+
+end
+
   def _forms
   end
 
